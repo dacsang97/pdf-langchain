@@ -1,11 +1,14 @@
 import dotenv from "dotenv-safe";
+import path from "path";
 import { OpenAI } from "langchain/llms/openai";
 import { loadQAStuffChain } from "langchain/chains";
 import { PDFLoader } from "langchain/document_loaders/fs/pdf";
 
 dotenv.config();
 
-const loader = new PDFLoader("./cv.pdf");
+const PDF_PATH = path.resolve("./cv.pdf");
+
+const loader = new PDFLoader(PDF_PATH);
 const docs = await loader.load();
 
 const question = `
